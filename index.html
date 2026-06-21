@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built to Break: Urban Scrollytelling Project</title>
+    <!-- We're adding Tailwind CSS via CDN for quick, clean styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+
+    <!-- Header Section -->
+    <header class="max-w-4xl mx-auto text-center py-20 px-4">
+        <h1 class="text-4xl md:text-6xl font-black text-red-500 tracking-tight mb-4">BUILT TO BREAK</h1>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            An investigative data story exploring how illegal building subdivisions and traffic congestion create emergency response traps.
+        </p>
+    </header>
+
+    <!-- Main Scrollytelling Container -->
+    <main class="relative max-w-7xl mx-auto px-4 lg:flex lg:gap-8 pb-32">
+        
+        <!-- Left Side: Scrolling Narrative Steps -->
+        <div class="lg:w-1/2 space-y-[60vh] my-[20vh]">
+            
+            <!-- Step 1 -->
+            <div class="scroll-step bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700" data-step="1">
+                <h3 class="text-2xl font-bold mb-2 text-red-400">01 / The Macro Pressure</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Over the last decade, commercial and residential footprints have expanded rapidly. As urban density hits its limit, spaces meant for small families are being packed beyond capacity.
+                </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="scroll-step bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700" data-step="2">
+                <h3 class="text-2xl font-bold mb-2 text-red-400">02 / The Structural Loophole</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    When we look at building code approvals versus reality, unauthorized vertical expansion leaves neighborhoods with dangerously narrow exits and compromised safety clearances.
+                </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="scroll-step bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700" data-step="3">
+                <h3 class="text-2xl font-bold mb-2 text-red-400">03 / Inside the Fire Trap</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Take the recent tragic short-circuits in South Delhi's residential zones. Spaces cleared legally for a handful of rooms were divided into dozens of tight, windowless micro-units.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Right Side: Sticky Visual Container -->
+        <div class="hidden lg:block lg:w-1/2 lg:sticky lg:top-10 lg:h-[80vh] bg-gray-800 rounded-xl border border-gray-700 flex flex-col items-center justify-center p-6 shadow-2xl">
+            <div class="text-center">
+                <div id="chart-placeholder" class="text-5xl mb-4">📊</div>
+                <h2 id="chart-title" class="text-2xl font-bold text-gray-200 mb-2">Interactive Visual Canvas</h2>
+                <p id="chart-desc" class="text-gray-400 text-sm max-w-sm mx-auto">
+                    This box is locked in place. As you scroll through the stories on the left, this text and the active chart display will update dynamically.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
