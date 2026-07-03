@@ -4,65 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Built to Break: Urban Scrollytelling Project</title>
-    <!-- We're adding Tailwind CSS via CDN for quick, clean styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .scroll-step { transition: opacity 0.4s ease, transform 0.4s ease; }
+    </style>
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans">
+<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+  
+  <!-- SECTION 1: TITLE SLIDE / HERO SECTION -->
+  <section class="relative w-full h-screen flex flex-col items-center justify-center bg-zinc-950 overflow-hidden select-none px-4">
+    <div class="absolute inset-0 z-0">
+      <img src="273648919_70ad9adcf1_c.jpg" alt="Delhi Urban Infrastructure Grid" class="w-full h-full object-cover filter brightness-[0.70] contrast-[1.05]" />
+      <div class="absolute inset-0 bg-gradient-to-b from-zinc-950/40 via-transparent to-zinc-950/80"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-4xl text-center flex flex-col items-center justify-center space-y-4 p-8 md:p-12 rounded-2xl bg-zinc-950/50 backdrop-blur-md border border-zinc-800/30 shadow-2xl">
+      <p class="text-xs font-bold tracking-[0.25em] text-red-500 uppercase font-mono">Design Project</p>
+      <h1 class="text-6xl md:text-6xl font-black tracking-tight text-zinc-100 uppercase font-sans drop-shadow-md">Built to Break</h1>
+      <p class="max-w-2xl text-sm md:text-base text-zinc-300 font-medium leading-relaxed mt-2 text-balance">
+        Analyzing Urban Infrastructure Capacity & Risk in India when Metropolitan Expansion overrides Municipal Limits.
+      </p>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60 animate-bounce">
+      <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 drop-shadow">Scroll to Explore</span>
+      <svg class="w-4 h-4 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
 
-    <!-- Header Section -->
-    <header class="max-w-4xl mx-auto text-center py-20 px-4">
-        <h1 class="text-4xl md:text-6xl font-black text-red-500 tracking-tight mb-4">BUILT TO BREAK</h1>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-            An investigative data story exploring how illegal building subdivisions and traffic congestion create emergency response traps.
+  <!-- SECTION 2: CASE STUDY TRANSITION SLIDE (MALVIYA NAGAR ACCIDENT) -->
+  <section class="relative w-full min-h-screen flex items-center justify-center bg-zinc-950 px-6 py-16 md:py-24 overflow-hidden select-none">
+    <div class="absolute inset-0 z-0">
+      <img src="bg2.jpeg" alt="Sparks and ash background texture" class="w-full h-full object-cover filter brightness-[0.70] contrast-[1.10]" />
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-transparent to-zinc-950/90"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-5 bg-zinc-900/90 border border-zinc-800/80 p-8 md:p-10 rounded-2xl shadow-2xl backdrop-blur flex flex-col justify-center h-full min-h-[480px]">
+        <span class="text-xs font-bold tracking-[0.2em] text-red-500 uppercase font-mono mb-2">The Baseline Model </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-100 uppercase font-sans mb-4 leading-tight">Malviya Nagar Fire Accident</h2>
+        <p class="text-zinc-400 text-sm md:text-base leading-relaxed font-light mb-8">
+          The catalytic event that proved high-density incidents are predictable data failures. A massive blaze ripped through Hauz Rani, exposing a 100% loss in evacuation velocity due to illegal packing.
         </p>
-    </header>
+        <div class="space-y-5">
+          <div class="flex items-start gap-3">
+            <span class="text-red-500 text-base font-bold mt-0.5">➔</span>
+            <div>
+              <h4 class="text-sm font-bold uppercase tracking-wider text-zinc-200">Narrow Lanes</h4>
+              <p class="text-zinc-400 text-xs mt-0.5 leading-relaxed">Physical blockage of fire tenders due to tight street layouts.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-red-500 text-base font-bold mt-0.5">➔</span>
+            <div>
+              <h4 class="text-sm font-bold uppercase tracking-wider text-zinc-200">Compliance Gaps</h4>
+              <p class="text-zinc-400 text-xs mt-0.5 leading-relaxed">Commercial units operating at 4x their sanctioned capacity, overloading local infrastructure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7 flex justify-center items-center h-full">
+        <div class="w-full h-full max-h-[500px] rounded-2xl p-1 bg-gradient-to-br from-red-900/40 via-red-600/20 to-transparent shadow-[0_0_40px_rgba(220,38,38,0.15)] overflow-hidden">
+          <div class="w-full h-full rounded-xl overflow-hidden bg-zinc-900 border border-red-500/30">
+            <img src="delhi-fire-accident.jpg" alt="Malviya Nagar active fire rescue operation scene" class="w-full h-full object-cover filter brightness-[0.90] contrast-[1.05]" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Main Scrollytelling Container -->
-    <main class="relative max-w-7xl mx-auto px-4 lg:flex lg:gap-8 pb-32">
+  <!-- SECTION 3: MAIN SCROLLYTELLING CONTAINER -->
+  <div class="relative w-full bg-zinc-950 border-t border-zinc-900">
+    <!-- Restored the original flex scrollytelling container parameters -->
+    <main class="relative max-w-7xl mx-auto px-4 lg:flex lg:gap-12 pb-20 pt-24">
         
-        <!-- Left Side: Scrolling Narrative Steps -->
-        <div class="lg:w-1/2 space-y-[60vh] my-[20vh]">
+        <!-- LEFT COLUMN: Narrative Text Blocks -->
+        <div class="w-full lg:w-1/2 space-y-[70vh] my-[10vh]">
             
-            <!-- Step 1 -->
-            <div class="scroll-step bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700" data-step="1">
-                <h3 class="text-2xl font-bold mb-2 text-red-400">01 / The Macro Pressure</h3>
-                <p class="text-gray-300 leading-relaxed">
+            <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="1">
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 01 // Growth Dynamics</span>
+                <h3 class="text-2xl font-bold mb-3 text-zinc-100">The Macro Pressure</h3>
+                <p class="text-gray-300 leading-relaxed text-sm md:text-base">
                     Over the last decade, commercial and residential footprints have expanded rapidly. As urban density hits its limit, spaces meant for small families are being packed beyond capacity.
                 </p>
             </div>
 
-            <!-- Step 2 -->
-            <div class="scroll-step bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700" data-step="2">
-                <h3 class="text-2xl font-bold mb-2 text-red-400">02 / The Structural Loophole</h3>
-                <p class="text-gray-300 leading-relaxed">
+            <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="2">
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 02 // Structural Deficit</span>
+                <h3 class="text-2xl font-bold mb-3 text-zinc-100">The Structural Loophole</h3>
+                <p class="text-gray-300 leading-relaxed text-sm md:text-base">
                     When we look at building code approvals versus reality, unauthorized vertical expansion leaves neighborhoods with dangerously narrow exits and compromised safety clearances.
                 </p>
             </div>
 
-            <!-- Step 3 -->
-            <div class="scroll-step bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700" data-step="3">
-                <h3 class="text-2xl font-bold mb-2 text-red-400">03 / Inside the Fire Trap</h3>
-                <p class="text-gray-300 leading-relaxed">
+            <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="3">
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 03 // Local Bottlenecks</span>
+                <h3 class="text-2xl font-bold mb-3 text-zinc-100">Inside the Fire Trap</h3>
+                <p class="text-gray-300 leading-relaxed text-sm md:text-base">
                     Take the recent tragic short-circuits in South Delhi's residential zones. Spaces cleared legally for a handful of rooms were divided into dozens of tight, windowless micro-units.
                 </p>
             </div>
 
-        </div>
-
-        <!-- Right Side: Sticky Visual Container -->
-        <div class="hidden lg:block lg:w-1/2 lg:sticky lg:top-10 lg:h-[80vh] bg-gray-800 rounded-xl border border-gray-700 flex flex-col items-center justify-center p-6 shadow-2xl">
-            <div class="text-center">
-                <div id="chart-placeholder" class="text-5xl mb-4">📊</div>
-                <h2 id="chart-title" class="text-2xl font-bold text-gray-200 mb-2">Interactive Visual Canvas</h2>
-                <p id="chart-desc" class="text-gray-400 text-sm max-w-sm mx-auto">
-                    This box is locked in place. As you scroll through the stories on the left, this text and the active chart display will update dynamically.
+            <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="4">
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 04 // Macro Vulnerability</span>
+                <h3 class="text-2xl font-bold mb-3 text-zinc-100">National Vulnerability Spectrum</h3>
+                <p class="text-gray-300 leading-relaxed text-sm md:text-base">
+                    When compared nationally, dense regional zones like Bengaluru and Delhi spike dangerously high on the Fire Vulnerability Index due to systemic emergency response delays.
                 </p>
+            </div>
+
+        </div> 
+
+        <!-- RIGHT COLUMN: Sticky Media/Chart Display Container Block -->
+        <div class="w-full lg:w-1/2 lg:sticky lg:top-24 lg:h-[70vh] bg-zinc-900/90 border border-zinc-800 rounded-2xl p-8 shadow-2xl overflow-hidden self-start mt-8 lg:mt-[10vh]">
+            <div class="w-full h-full flex flex-col justify-between">
+                
+                <div class="w-full flex-grow flex justify-center items-center relative min-h-[280px]">
+                    <!-- This div with id="chart-placeholder" is where your js/app.js swaps charts/iFrames during scroll -->
+                    <div id="chart-placeholder" class="text-6xl transform transition-transform duration-300 hover:scale-105">
+                        📈
+                    </div>
+                </div>
+                
+                <div class="border-t border-zinc-800/80 pt-6 mt-4">
+                    <h2 id="chart-title" class="text-xl font-extrabold text-zinc-100 tracking-tight mb-2 uppercase">
+                        Chart 1: Urban Expansion Curve
+                    </h2>
+                    <p id="chart-desc" class="text-zinc-400 text-sm leading-relaxed font-light">
+                        Visualizing the 10-year spike in commercial and residential density loading across the metropolitan sectors.
+                    </p>
+                </div>
+
             </div>
         </div>
 
     </main>
+  </div>
 
-    <script src="js/app.js"></script>
+  <!-- FOOTER -->
+  <footer class="h-[60vh] bg-gradient-to-t from-black to-transparent flex items-center justify-center border-t border-zinc-900">
+      <p class="text-xs font-mono text-zinc-600 tracking-widest uppercase">Built to Break 2026</p>
+  </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
