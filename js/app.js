@@ -1,7 +1,6 @@
-// Wait for the HTML elements to fully load on the page
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Define what text changes on the right-side sticky panel for each scroll step
+    // 1. Realigned Dictionary Object: Matches your precise layout cards 1 through 4
     const stepContent = {
         "1": {
             icon: "📈",
@@ -17,45 +16,52 @@ document.addEventListener("DOMContentLoaded", () => {
             icon: "🚨",
             title: "Chart 3: Inside the Fire Trap",
             desc: "Mapping the exact physical floor space layouts where massive room subdivisions trap residents during emergency crises."
+        },
+        "4": {
+            icon: "📊",
+            title: "Chart 4: National Fire Vulnerability Index",
+            desc: "Overall vulnerability scores across major Indian metros, highlighting systemic emergency transit delays and deficits."
         }
     };
 
-    // Grab the placeholder elements from the right side of our HTML
+    // Grab the placeholder nodes
     const chartIcon = document.getElementById("chart-placeholder");
     const chartTitle = document.getElementById("chart-title");
     const chartDesc = document.getElementById("chart-desc");
+    const steps = document.querySelectorAll(".scroll-step");
 
-    // Configure the screen observer settings
+    // 2. Production Intersection Settings: Targets the sweet spot viewport window
     const observerOptions = {
-        root: null,                 // Measures relative to your screen's viewpoint
-        rootMargin: "-40% 0px -40% 0px", // Triggers when a text step hits the middle 20% of your screen
-        threshold: 0
+        root: null,
+        rootMargin: "-25% 0px -45% 0px", 
+        threshold: 0.1
     };
 
-    // Create the logic loop that watches the scroll progress
+    // 3. Execution Intersection Monitor Loop
     const scrollObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // Only trigger a change when a section enters the middle focal area
+            const stepId = entry.target.getAttribute("data-step");
+            
             if (entry.isIntersecting) {
-                const stepId = entry.target.getAttribute("data-step");
+                // Dim down unselected elements, pop active element to full opacity
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "scale(1.02)";
                 
-                // Pull the matching text content for this active step
                 const activeData = stepContent[stepId];
-                
                 if (activeData) {
-                    // Update the sticky right-hand container elements dynamically
                     chartIcon.textContent = activeData.icon;
                     chartTitle.textContent = activeData.title;
                     chartDesc.textContent = activeData.desc;
-                    
-                    // console.log() helps us debug in the browser inspect tool!
                     console.log(`Successfully transitioned to Step ${stepId}`);
                 }
+            } else {
+                // Dim down cards that exit the focus zone
+                entry.target.style.opacity = "0.3";
+                entry.target.style.transform = "scale(1.0)";
             }
         });
     }, observerOptions);
 
-    // Tell the observer to start tracking all cards with the 'scroll-step' class
-    const steps = document.querySelectorAll(".scroll-step");
+    // Bind monitor loop to step cards
     steps.forEach(step => scrollObserver.observe(step));
 });
