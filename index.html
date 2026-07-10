@@ -8,6 +8,11 @@
     <style>
         html { scroll-behavior: smooth; }
         .scroll-step { transition: opacity 0.4s ease, transform 0.4s ease; }
+        /* Smooth transitions using opacity and transform matrices for zero-glitch frame rendering */
+        .fade-element { 
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
+            will-change: opacity, transform;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans antialiased">
@@ -75,14 +80,13 @@
 
   <!-- SECTION 3: MAIN SCROLLYTELLING CONTAINER -->
   <div class="relative w-full bg-zinc-950 border-t border-zinc-900">
-    <!-- Restored the original flex scrollytelling container parameters -->
     <main class="relative max-w-7xl mx-auto px-4 lg:flex lg:gap-12 pb-20 pt-24">
         
         <!-- LEFT COLUMN: Narrative Text Blocks -->
-        <div class="w-full lg:w-1/2 space-y-[70vh] my-[10vh]">
+        <div class="w-full lg:w-1/2 space-y-[70vh] mb-[30vh]">
             
             <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="1">
-                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 01 // Growth Dynamics</span>
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Growth Dynamics</span>
                 <h3 class="text-2xl font-bold mb-3 text-zinc-100">The Macro Pressure</h3>
                 <p class="text-gray-300 leading-relaxed text-sm md:text-base">
                     Over the last decade, commercial and residential footprints have expanded rapidly. As urban density hits its limit, spaces meant for small families are being packed beyond capacity.
@@ -90,7 +94,7 @@
             </div>
 
             <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="2">
-                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 02 // Structural Deficit</span>
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Structural Deficit</span>
                 <h3 class="text-2xl font-bold mb-3 text-zinc-100">The Structural Loophole</h3>
                 <p class="text-gray-300 leading-relaxed text-sm md:text-base">
                     When we look at building code approvals versus reality, unauthorized vertical expansion leaves neighborhoods with dangerously narrow exits and compromised safety clearances.
@@ -98,16 +102,16 @@
             </div>
 
             <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="3">
-                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 03 // Local Bottlenecks</span>
-                <h3 class="text-2xl font-bold mb-3 text-zinc-100">Inside the Fire Trap</h3>
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Transit Bottlenecks</span>
+                <h3 class="text-2xl font-bold mb-3 text-zinc-100">Regional Commute Delays</h3>
                 <p class="text-gray-300 leading-relaxed text-sm md:text-base">
-                    Take the recent tragic short-circuits in South Delhi's residential zones. Spaces cleared legally for a handful of rooms were divided into dozens of tight, windowless micro-units.
+                    When high-density built-up volumes overflow structural plans, the surrounding street layout collapses completely. Commuters in primary business zones routinely hit over double their baseline travel times during peak operating cycles.
                 </p>
             </div>
 
             <div class="scroll-step bg-gray-800/80 backdrop-blur p-8 rounded-xl shadow-xl border border-gray-700/60" data-step="4">
-                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Phase 04 // Macro Vulnerability</span>
-                <h3 class="text-2xl font-bold mb-3 text-zinc-100">National Vulnerability Spectrum</h3>
+                <span class="text-xs font-mono text-red-400 uppercase tracking-widest block mb-2">Macro Vulnerability</span>
+                <h3 class="text-2xl font-bold mb-3 text-zinc-100">Cross-Metropolitan Risk Index</h3>
                 <p class="text-gray-300 leading-relaxed text-sm md:text-base">
                     When compared nationally, dense regional zones like Bengaluru and Delhi spike dangerously high on the Fire Vulnerability Index due to systemic emergency response delays.
                 </p>
@@ -115,24 +119,41 @@
 
         </div> 
 
-        <!-- RIGHT COLUMN: Sticky Media/Chart Display Container Block -->
-        <div class="w-full lg:w-1/2 lg:sticky lg:top-24 lg:h-[70vh] bg-zinc-900/90 border border-zinc-800 rounded-2xl p-8 shadow-2xl overflow-hidden self-start mt-8 lg:mt-[10vh]">
-            <div class="w-full h-full flex flex-col justify-between">
+        <!-- RIGHT COLUMN: Sticky Panel Frame -->
+        <div class="w-full lg:w-1/2 lg:sticky lg:top-[10vh] lg:h-[75vh] min-h-[580px] bg-zinc-900/90 border border-zinc-800 rounded-2xl p-8 shadow-2xl overflow-hidden self-start mt-8 lg:mt-0">
+            <div class="w-full h-full flex flex-col justify-start space-y-4">
                 
-                <div class="w-full flex-grow flex justify-center items-center relative min-h-[280px]">
-                    <!-- This div with id="chart-placeholder" is where your js/app.js swaps charts/iFrames during scroll -->
-                    <div id="chart-placeholder" class="text-6xl transform transition-transform duration-300 hover:scale-105">
-                        📈
-                    </div>
-                </div>
-                
-                <div class="border-t border-zinc-800/80 pt-6 mt-4">
+                <!-- Headings at top -->
+                <div class="border-b border-zinc-800/80 pb-4">
                     <h2 id="chart-title" class="text-xl font-extrabold text-zinc-100 tracking-tight mb-2 uppercase">
-                        Chart 1: Urban Expansion Curve
+                        Urban Expansion Curve
                     </h2>
                     <p id="chart-desc" class="text-zinc-400 text-sm leading-relaxed font-light">
                         Visualizing the 10-year spike in commercial and residential density loading across the metropolitan sectors.
                     </p>
+                </div>
+                
+                <div class="w-full flex-grow relative overflow-hidden flex justify-center items-start">
+                    
+                    <div id="chart-track-1" class="w-full h-[380px] overflow-hidden fade-element opacity-100 scale-100 absolute inset-0 flex justify-center items-start">
+                        <iframe title="" aria-label="Line chart" src="https://datawrapper.dwcdn.net/Ozf7Y/3/" scrolling="no" frameborder="0" style="border: none; width: 0; min-width: 100% !important; filter: invert(1) contrast(1.5);" height="410" data-external="1"></iframe>
+                    </div>
+
+                    <div id="chart-track-2" class="w-full h-[415px] fade-element opacity-0 scale-95 pointer-events-none absolute inset-0 flex justify-center items-start">
+                        <div class="relative w-full h-full overflow-hidden flex justify-center items-start">
+                            <iframe title="" aria-label="Stacked column chart" src="https://datawrapper.dwcdn.net/xXebj/2/" scrolling="no" frameborder="0" style="border: none; width: 0; min-width: 100% !important; filter: invert(1) contrast(1.5);" height="471" data-external="1"></iframe>
+                            <div class="absolute bottom-0 left-0 right-0 h-12 bg-zinc-900 pointer-events-none"></div>
+                        </div>
+                    </div>
+
+                    <div id="chart-track-3" class="w-full h-[400px] overflow-hidden fade-element opacity-0 scale-95 pointer-events-none absolute inset-0 flex justify-center items-start">
+                        <iframe title="" aria-label="Column Chart" src="https://datawrapper.dwcdn.net/j9KNe/2/" scrolling="no" frameborder="0" style="border: none; width: 0; min-width: 100% !important; filter: invert(1) contrast(1.5);" height="436" data-external="1"></iframe>
+                    </div>
+
+                    <div id="chart-track-4" class="w-full h-[180px] overflow-hidden fade-element opacity-0 scale-95 pointer-events-none absolute inset-0 flex justify-center items-start">
+                        <iframe title="" aria-label="Bar Chart" src="https://datawrapper.dwcdn.net/c8qtx/2/" scrolling="no" frameborder="0" style="border: none; width: 0; min-width: 100% !important; filter: invert(1) contrast(1.5);" height="211" data-external="1"></iframe>
+                    </div>
+
                 </div>
 
             </div>
@@ -146,6 +167,78 @@
       <p class="text-xs font-mono text-zinc-600 tracking-widest uppercase">Built to Break 2026</p>
   </footer>
 
-  <script src="js/app.js"></script>
+  <!-- SCROLLYTELLING INTERSECTION OBSERVER CONTROLLER -->
+  <script>
+    const stepData = {
+        "1": {
+            title: "Urban Expansion Curve",
+            desc: "Visualizing the 10-year spike in commercial and residential density loading across the metropolitan sectors.",
+            targetTrack: "chart-track-1"
+        },
+        "2": {
+            title: "Structural Deficit Analysis",
+            desc: "Comparative tracking mapping building height violations vs. legal blueprint allowances.",
+            targetTrack: "chart-track-2"
+        },
+        "3": {
+            title: "Peak Traffic Congestion Levels",
+            desc: "The scale of regional travel delay parameters when vehicular density rates exceed municipal route tolerances.",
+            targetTrack: "chart-track-3"
+        },
+        "4": {
+            title: "National Fire Vulnerability Spectrum",
+            desc: "Comparative cross-metropolitan index tracing emergency response structural delays across critical dense zones.",
+            targetTrack: "chart-track-4"
+        }
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: "-20% 0px -40% 0px",
+        threshold: 0.1
+    };
+
+    const tracks = ["chart-track-1", "chart-track-2", "chart-track-3", "chart-track-4"];
+
+    const scrollyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const stepId = entry.target.getAttribute('data-step');
+                const data = stepData[stepId];
+                
+                if (data) {
+                    document.getElementById('chart-title').innerText = data.title;
+                    document.getElementById('chart-desc').innerText = data.desc;
+
+                    tracks.forEach(trackId => {
+                        const el = document.getElementById(trackId);
+                        if (trackId === data.targetTrack) {
+                            el.style.opacity = "1";
+                            el.style.transform = "scale(1)";
+                            el.classList.remove('pointer-events-none');
+                        } else {
+                            el.style.opacity = "0";
+                            el.style.transform = "scale(0.95)";
+                            el.classList.add('pointer-events-none');
+                        }
+                    });
+                    
+                    document.querySelectorAll('.scroll-step').forEach(card => {
+                        card.classList.remove('opacity-100');
+                        card.classList.add('opacity-40', 'scale-95');
+                    });
+                    entry.target.classList.remove('opacity-40', 'scale-95');
+                    entry.target.classList.add('opacity-100', 'scale-100');
+                }
+            }
+        });
+    }, observerOptions);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.scroll-step').forEach(step => {
+            scrollyObserver.observe(step);
+        });
+    });
+  </script>
 </body>
 </html>
